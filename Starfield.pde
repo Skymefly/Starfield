@@ -1,14 +1,15 @@
 //your code here
-NormalParticle [] NP;
+Particle [] NP;
 void setup()
 {
 	//your code here
 	size(400,400);
-	NP = new NormalParticle[1000];
+	NP = new Particle[1000];
 	for (int i=0; i<NP.length; i++)
 	{
 		NP[i]=new NormalParticle(200,200);
 	}
+	NP[0]= new OddballParticle();
 }
 void draw()
 {
@@ -16,12 +17,11 @@ void draw()
 	background(0);
 	for(int i=0; i<NP.length; i++)
 	{
-		//NP=new NormalParticle(200,200);
 		NP[i].move();
 		NP[i].show();
 	}
 }
-class NormalParticle
+class NormalParticle implements Particle
 {
 	//your code here
 	double myX, myY, NAngle, NSpeed;
@@ -33,7 +33,7 @@ class NormalParticle
 		myY=y;
 		NAngle=((Math.PI*2)*Math.random());
 		NSpeed=Math.random()*2;
-		NColor=color(x,y,y);
+		NColor=color(Math.random(),Math.random(),Math.random());
 	}
 	void move()
 	{
@@ -42,26 +42,46 @@ class NormalParticle
 	}
 	void show()
 	{
-		
-		while(Size=2; myX-- || myX++ || myY++ || myY--; Size+=0.01)
-		{
-			fill(NColor);
+
+		fill(NColor);
 		noStroke();
 		ellipse((float)myX, (float)myY, (float)Size, (float)Size);
-		}
 	}
-
-
 }
 interface Particle
 {
 	//your code here
 	public void move();
+	public void show();
 
 }
-class OddballParticle //uses an interface
+class OddballParticle implements Particle //uses an interface
 {
 	//your code here
+	double myX, myY, NAngle, NSpeed;
+	color NColor;
+	int Size=5;
+	OddballParticle(int x, int y)
+	{
+		myX=x;
+		myY=y;
+		NAngle=((Math.PI*4)*Math.random());
+		NSpeed=Math.random()*4;
+		NColor=color(y,x,y);
+	}
+	void move()
+	{
+		myX=myX+(Math.cos(NAngle1)*NSpeed1);
+		myY=myY+(Math.sin(NAngle1)*NSpeed1);
+	}
+	void show()
+	{
+
+		fill(NColor);
+		noStroke();
+		ellipse((float)myX, (float)myY, (float)Size, (float)Size);
+
+	}
 }
 class JumboParticle //uses inheritance
 {

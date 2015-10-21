@@ -48,28 +48,28 @@ class NormalParticle implements Particle
 				myX=mouseX;
 				myY=mouseY;
 				ran--;
-				if(ran<5){ran=3;}
+				if(ran<1){ran=3;}
 			}
 		if(myX>410)
 			{
 				myX=mouseX;
 				myY=mouseY;
 				ran++;
-				if(ran>5){ran=1;}
+				if(ran>5){ran=2;}
 			}
 		if(myY<-10)
 			{
 				myX=mouseX;
 				myY=mouseY;
-				ran++;
-				if(ran>5){ran=1;}
+				ran--;
+				if(ran<1){ran=5;}
 			}
 		if(myY>410)
 			{
 				myX=mouseX;
 				myY=mouseY;
 				ran++;
-				if(ran>5){ran=1;}
+				if(ran>5){ran=4;}
 			}
 	}
 	public void show()
@@ -118,8 +118,8 @@ class OddballParticle implements Particle //uses an interface
 	}
 	public void move()
 	{
-		myX1=myX1+(Math.cos(NAngle1)*NSpeed1);
-		myY1=myY1+(Math.sin(NAngle1)*NSpeed1);
+		myX1=myX1+(Math.cos(NAngle1)*NSpeed1*(Math.random()));
+		myY1=myY1+(Math.sin(NAngle1)*NSpeed1*(Math.random()));
 		if(myX1<0)
 			{
 				myX1=mouseX;
@@ -159,6 +159,21 @@ class JumboParticle extends NormalParticle //uses inheritance
 	public void show()
 	{
 		fill(NColor);
+		if(ran==1){
+			NColor=color(232,21,231);
+		}
+		if(ran==2){
+			NColor=color(100,241,23);
+		}
+		if(ran==3){
+			NColor=color(221,121,23);
+		}
+		if(ran==4){
+			NColor=color(22,211,231);
+		}
+		if(ran==5){
+			NColor=color(174,153,199);
+		}
 		noStroke();
 		ellipse((float)myX, (float)myY, Size, Size);
 	}
